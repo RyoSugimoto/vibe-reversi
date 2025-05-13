@@ -99,3 +99,36 @@ h1 {
   transform: translateY(0);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+@media (max-width: 600px) {
+  body {
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  h1 {
+    font-size: 20px; /* Adjust heading size */
+  }
+
+  #board {
+    grid-template-columns: repeat(8, 40px);
+    grid-template-rows: repeat(8, 40px);
+    gap: 1px; /* Reduce gap for smaller screens */
+    width: 328px; /* Adjust board width */
+  }
+
+  .cell {
+    width: 40px;
+    height: 40px;
+  }
+
+  #scoreboard {
+    font-size: 16px; /* Adjust scoreboard font size */
+    flex-direction: column; /* Stack scores vertically */
+    gap: 10px; /* Add spacing between scores */
+  }
+
+  #controls button {
+    font-size: 14px; /* Adjust button font size */
+    padding: 8px 16px; /* Adjust button padding */
+  }
+}
