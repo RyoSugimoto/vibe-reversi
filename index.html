@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reversi Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Reversi Game</h1>
+  <p id="current-player">現在のターン: 黒</p>
+  <div id="scoreboard">
+    <p>黒: <span id="black-count">2</span></p>
+    <p>白: <span id="white-count">2</span></p>
+  </div>
+  <canvas id="board" width="400" height="400"></canvas>
+  <div id="controls">
+    <button id="start-auto-play">自動プレイ開始</button>
+    <button id="stop-auto-play">自動プレイ停止</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
