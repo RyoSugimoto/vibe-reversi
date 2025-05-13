@@ -2,7 +2,7 @@ const canvas = document.getElementById("board");
 const ctx = canvas.getContext("2d");
 const size = 8;
 let currentPlayer = "black";
-const cellSize = canvas.width / size;
+let cellSize = canvas.width / size; // cellSizeをletで定義
 
 // 盤面の初期化
 const gameBoard = Array(size).fill(null).map(() => Array(size).fill(null));
@@ -176,13 +176,34 @@ function stopAutoPlay() {
 document.getElementById("start-auto-play").addEventListener("click", startAutoPlay);
 document.getElementById("stop-auto-play").addEventListener("click", stopAutoPlay);
 
+// Adjust canvas size to match the grid size
+function adjustCanvasSize() {
+  // スマートフォン向けに適切なサイズを設定
+  const maxWidth = Math.min(400, window.innerWidth - 40); // 画面の幅から余白を引いた値
+  const newCellSize = maxWidth / size;
+  canvas.width = maxWidth;
+  canvas.height = maxWidth;
+  cellSize = newCellSize; // cellSizeを更新
+}
+
+// Call adjustCanvasSize during initialization and on window resize
+window.addEventListener("resize", () => {
+  adjustCanvasSize();
+  renderBoard();
+});
+
+// Initial adjustment
+adjustCanvasSize();
+
 // 初期描画
 renderBoard();
 
 canvas.addEventListener("click", (e) => {
   const rect = canvas.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
+  const scaleX = canvas.width / rect.width;
+  const scaleY = canvas.height / rect.height;
+  const x = (e.clientX - rect.left) * scaleX;
+  const y = (e.clientY - rect.top) * scaleY;
   const col = Math.floor(x / cellSize);
   const row = Math.floor(y / cellSize);
   handleMove(row, col);

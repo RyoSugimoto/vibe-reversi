@@ -18,6 +18,10 @@ h1 {
   gap: 2px;
   margin: 20px auto;
   width: 416px;
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 .cell {
@@ -110,10 +114,9 @@ h1 {
   }
 
   #board {
-    grid-template-columns: repeat(8, 40px);
-    grid-template-rows: repeat(8, 40px);
-    gap: 1px; /* Reduce gap for smaller screens */
-    width: 328px; /* Adjust board width */
+    width: calc(100% - 40px);
+    height: auto;
+    margin: 20px auto;
   }
 
   .cell {
